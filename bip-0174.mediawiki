@@ -648,79 +648,109 @@ and suggestions for improving this proposal.
 
 Any data types, their associated scope and BIP number must be defined here
 
-{| class="wikitable" style="width: auto; text-align: center; font-size: smaller; table-layout: fixed;"
-!Scope
-!Type values
-!Name
-!BIP Number
+{| class="wikitable"
+! Scope
+! BIP
+! Name
+! KeyType
+! Key
+! Value
 |-
 | Global
-| 0
+| BIP 174
 | PSBT_GLOBAL_UNSIGNED_TX
-| BIP 174
+| 0x00
+| None
+| {raw transaction}
 |-
 | Input
-| 0
+| BIP 174
 | PSBT_IN_NON_WITNESS_UTXO
-| BIP 174
+| 0x00
+| None
+| {raw transaction with input }(non segwit only)
 |-
 | Input
-| 1
+| BIP 174
 | PSBT_IN_WITNESS_UTXO
-| BIP 174
+| 0x01
+| None
+| {serialized transaction output({output value}|<scriptPubKey>)}
 |-
 | Input
-| 2
+| BIP 174
 | PSBT_IN_PARTIAL_SIG
-| BIP 174
+| 0x02
+| {public key}
+| {signature}
 |-
 | Input
-| 3
+| BIP 174
 | PSBT_IN_SIGHASH_TYPE
-| BIP 174
+| 0x03
+| None
+| {32bit sighash type}
 |-
 | Input
-| 4
+| BIP 174
 | PSBT_IN_REDEEM_SCRIPT
-| BIP 174
+| 0x04
+| None
+| {redeemScript}
 |-
 | Input
-| 5
+| BIP 174
 | PSBT_IN_WITNESS_SCRIPT
-| BIP 174
+| 0x05
+| None
+| {witnessScript}
 |-
 | Input
-| 6
+| BIP 174
 | PSBT_IN_BIP32_DERIVATION
-| BIP 174
+| 0x06
+| {public key}
+| {master key fingerprint}|{32bit derivation path}|{32bit derivation path...}
 |-
 | Input
-| 7
+| BIP 174
 | PSBT_IN_FINAL_SCRIPTSIG
-| BIP 174
+| 0x07
+| None
+| {finalized scriptSig}
 |-
 | Input
-| 8
+| BIP 174
 | PSBT_IN_FINAL_SCRIPTWITNESS
-| BIP 174
+| 0x08
+| None
+| {finalized scriptWitness}
 |-
 | Input
-| 9
-| PSBT_IN_POR_COMMITMENT
 | [[bip-0127.mediawiki|BIP 127]]
+| PSBT_IN_POR_COMMITMENT
+| 0x09
+| None
+| {UTF8 BIP127 proof-of-reserves}
 |-
 | Output
-| 0
+| BIP 174
 | PSBT_OUT_REDEEM_SCRIPT
-| BIP 174
+| 0x00
+| None
+| {redeemScript}
 |-
 | Output
-| 1
+| BIP 174
 | PSBT_OUT_WITNESS_SCRIPT
-| BIP 174
+| 0x01
+| None
+| {witnessScript}
 |-
 | Output
-| 2
-| PSBT_OUT_BIP32_DERIVATION
 | BIP 174
+| PSBT_OUT_BIP32_DERIVATION
+| 0x02
+| {public key}
+| {master key fingerprint}|{32bit derivation path}|{32bit derivation path...}
 |}
