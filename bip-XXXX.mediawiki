@@ -11,6 +11,8 @@
   License: BSD-3-Clause
 </pre>
 
+== Introduction ==
+
 === Abstract ===
 
 This document proposes a couple of extensions to BIP 174 Partially Signed Bitcoin Transaction Format(aka PSBT).
@@ -33,37 +35,37 @@ In order to support Taproot we need to add a couple of new key-value pairs:
 ** Key: The original public key(before the tweak)
 *** <tt>{0x0A}|{public key}</tt>
 * Value: The 32 byte tweak for this input if it has one
-**<code>{32 byte tweak}</code><br />
+** <code>{32 byte tweak}</code>
+<br />
 
 * Type: A taproot merkle path <code>PSBT_IN_TAPROOT_PATH = 0x0B</code>
 ** Key: A 32 byte markle root (needs to match a 32 byte tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>)
 *** <tt>{0x0B}|{32 byte merkle root}</tt>
 * Value: The length of the script followed by the script followed by a list of 32 bytes hashes of siblings to be able to reproduce the root, for this input. (if it has one)
-**<code>{0x0B}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
-** Note: Hashing the script, Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. 
-
+** <code>{0x0B}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
+** Note: Hashing the script,
+Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. 
 Which should also be equivalent to the tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>.
-
 The hashing itself should be done according to bip-taproot.
-
 <br />
 
 * Type: Pay-to-contract input <code>PSBT_OUT_PAY_TO_CONTRACT = 0x03</code>
 ** Key: The original public key(before the tweak)
-***<tt>{0x03}|{public key}</tt>
+*** <tt>{0x03}|{public key}</tt>
 * Value: The 32 byte tweak for this input if it has one
-**<code>{32 byte tweak}</code><br />
+** <code>{32 byte tweak}</code>
+<br />
 
 * Type: A taproot merkle path <code>PSBT_OUT_TAPROOT_PATH = 0x04</code>
 ** Key: A 32 byte markle root (needs to match a 32 byte tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>)
-***<tt>{0x04}|{32 byte merkle root}</tt>
+*** <tt>{0x04}|{32 byte merkle root}</tt>
 * Value: The length of the script followed by the script followed by a list of 32 bytes hashes of siblings to be able to reproduce the root, for this input. (if it has one)
-**<code>{0x04}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
-** Note: Hashing the script, Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. 
-
+** <code>{0x04}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
+** Note: Hashing the script,
+Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. 
 Which should also be equivalent to the tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>.
-
 The hashing itself should be done according to bip-taproot.
+
 
 == Examples ==
 TBD
