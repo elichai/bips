@@ -59,6 +59,17 @@ Per-output types:
 ** Note: Hashing the script, Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. Which should also be equivalent to the tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>. The hashing itself should be done according to bip-taproot.
 
 
+Global types:
+* Type:  <code>PSBT_GLOBAL_UNDEFINED = 0xFF</code>
+** Key: Undefined
+*** <tt>{0x03}|?</tt>
+** Value: Undefined
+** <code>{?}</code> <br />
+
+The purpose of this type is to be used as metadata or other utils by wallets.
+
+TODO: Add references and usecases for that.
+
 == Examples ==
 TBD
 == Test Vectors ==
