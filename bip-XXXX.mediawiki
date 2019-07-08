@@ -31,6 +31,7 @@ PSBT is a great format for wallets and transaction signers. adding support for t
 
 In order to support Taproot we need to add a couple of new key-value pairs:  
 
+Per-input types:
 * Type: Pay-to-contract input <code>PSBT_IN_PAY_TO_CONTRACT = 0x0A</code>
 ** Key: The original public key(before the tweak)
 *** <tt>{0x0A}|{public key}</tt>
@@ -42,6 +43,9 @@ In order to support Taproot we need to add a couple of new key-value pairs:
 * Value: The length of the script followed by the script followed by a list of 32 bytes hashes of siblings to be able to reproduce the root, for this input. (if it has one)
 ** <code>{0x0B}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
 ** Note: Hashing the script, Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. Which should also be equivalent to the tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>. The hashing itself should be done according to bip-taproot. <br />
+
+
+Per-output types:
 * Type: Pay-to-contract input <code>PSBT_OUT_PAY_TO_CONTRACT = 0x03</code>
 ** Key: The original public key(before the tweak)
 *** <tt>{0x03}|{public key}</tt>
