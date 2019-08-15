@@ -40,8 +40,8 @@ Per-input types:
 * Type: A taproot merkle path <code>PSBT_IN_TAPROOT_PATH = 0x0B</code>
 ** Key: None. The key must only contain the 1 byte type
 *** <tt>{0x0B}</tt>
-** Value: The length of the script followed by the script followed by a list of 32 bytes hashes of siblings to be able to reproduce the root, for this input. (if it has one)
-*** <code>{0x0B}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
+** Value: The length of the script followed by the script followed by a length and list of 32 bytes that represents the taproot merkle path needed to construct a control block (if it has one)
+*** <code>{0x0B}|{script length}{script}{merkle path length}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
 ** Note: Hashing the script, Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. Which should also be equivalent to the tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>. The hashing itself should be done according to bip-taproot. <br />
 
 
@@ -54,8 +54,8 @@ Per-output types:
 * Type: A taproot merkle path <code>PSBT_OUT_TAPROOT_PATH = 0x04</code>
 ** Key: None. The key must only contain the 1 byte type
 *** <tt>{0x04}</tt>
-** Value: The length of the script followed by the script followed by the length of a 32 bytes hashes list, followed by the list itself (the list contains the require siblings to be able to reproduce the root, for this input. (if it has one))
-*** <code>{0x04}|{script length}{script}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
+Value: The length of the script followed by the script followed by a length and list of 32 bytes that represents the taproot merkle path needed to construct a control block (if it has one)
+*** <code>{0x04}|{script length}{script}{merkle path length}{32 byte hash of sibling}|..|{32 byte hash of sibling}</code>
 ** Note: Hashing the script, Then the hash of the script together with the next 32 byte hash and hashing the result together with the next 32 byte should in the end produce a hash equivalent to the merkle root. Which should also be equivalent to the tweak in <code>PSBT_IN_PAY_TO_CONTRACT</code>. The hashing itself should be done according to bip-taproot.
 
 
