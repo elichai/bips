@@ -81,7 +81,8 @@ TBD
 
 == Reference implementation ==
 
-TBD
-
+The reference implementation of the new PSBT fields is available at https://github.com/elichai/bitcoin/tree/2019-08-taproot-psbt
 == Acknowledgements ==
-TBD
+Thanks to Andrew Chow for his PSBT implementation and answering my questions on IRC.
+Thanks to Pieter Wuille who patiently listened and answered my endless amount of questions on IRC.
+Thanks to Andrew Poelstra who read some of my previous attempts and drafts and gave me great feedback.
