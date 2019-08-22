@@ -76,7 +76,8 @@ TBD
 TBD
 
 == Rationale ==
-
+The Rationale for `PSBT_GLOBAL_UNDEFINED` is that other wallets could utilize this to pass their own metadata without invalidating the PSBT.
+This can be very useful for more complicated wallets(i.e. Wassabi), sidechains(i.e. Liquid), and other software on top of bitcoin that utilizes both bitcoin's transactions and their own protocols.
 <references />
 
 == Reference implementation ==
